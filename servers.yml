@@ -53,7 +53,7 @@ Resources:
             apt-get install apache2 -y
             apt-get install unzip -y
             cd /var/www/html
-            aws s3 cp s3://udacity-udagram-storage/udagram.zip .
+            aws s3 cp s3://udagram01/udagram.zip .
             unzip -o udagram.zip
             #echo "Hey!,It works.. I am Udagram!" >> index.html
             systemctl start apache2.service
@@ -62,7 +62,9 @@ Resources:
         SecurityGroups:
         - Ref: WebServerSecGroup
         InstanceType: t3.small
-        IamInstanceProfile: !Ref EC2InstanceProfileRole
+        IamInstanceProfile:
+          Fn::ImportValue:
+            !Sub "${EnvironmentName}-IAM-NAME"
         BlockDeviceMappings:
         - DeviceName: "/dev/sdk"
           Ebs:
