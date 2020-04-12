@@ -77,8 +77,8 @@ Resources:
             !Sub "${EnvironmentName}-PRIV-NETS"
         LaunchConfigurationName:
           Ref: WebAppLaunchConfig
-        MinSize: 1
-        MaxSize: 2
+        MinSize: 4
+        MaxSize: 6
         TargetGroupARNs:
         - Ref: WebAppTargetGroup
     WebAppLB:
@@ -125,9 +125,10 @@ Resources:
         VpcId:
           Fn::ImportValue:
             Fn::Sub: "${EnvironmentName}-VPCID"
+
 Outputs:
-    LoadBalancerDns:
-        Description: The uri of the load balancer.
-        Value: !GetAtt WebAppLB.DNSName
-        Export: 
-            Name: !Sub ${EnvironmentName}-LB-DNS
+  WebAppLoadBalancerURL:
+      Description: Load Balancer URL
+      Value: !Join [ "", [ 'http://', !GetAtt WebAppLB.DNSName ]]
+      Export:
+          Name: !Sub ${EnvironmentName}-LB-URL
