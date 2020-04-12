@@ -2,5 +2,10 @@
     {
         "ParameterKey": "EnvironmentName",
         "ParameterValue": "Udagram"
+    },
+    {
+        "ParameterKey": "EC2InstanceProfileRole",
+        "ParameterValue": "arn:aws:s3:::udagram01"
     }
+
 ]

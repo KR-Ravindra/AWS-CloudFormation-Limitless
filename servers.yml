@@ -1,8 +1,9 @@
-Description: >
-   Alpha Testing
 Parameters:
     EnvironmentName:
         Description: An Environment name that will be prefixed to resources
+        Type: String
+    EC2InstanceProfileRole:
+        Description: IAM Role profile to be used when launching an EC2 Instance.
         Type: String
 Resources:
     LBSecGroup:
@@ -64,7 +65,7 @@ Resources:
         SecurityGroups:
         - Ref: WebServerSecGroup
         InstanceType: t3.small
-        IamInstanceProfile: !Sub ${EnvironmentName}-IAM-NAME
+        IamInstanceProfile: !Ref EC2InstanceProfileRole
         BlockDeviceMappings:
         - DeviceName: "/dev/sdk"
           Ebs:
@@ -77,8 +78,8 @@ Resources:
             !Sub "${EnvironmentName}-PRIV-NETS"
         LaunchConfigurationName:
           Ref: WebAppLaunchConfig
-        MinSize: 4
-        MaxSize: 6
+        MinSize: 1
+        MaxSize: 2
         TargetGroupARNs:
         - Ref: WebAppTargetGroup
     WebAppLB:
