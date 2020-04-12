@@ -8,7 +8,7 @@
 
 >Prerequesties:
 
-* [ ] Upload the WebApp into an S3 bucket (_public_).
+* [x] Upload the WebApp into an S3 bucket (_public_).
  
 > Usage:
 
