@@ -2,9 +2,6 @@ Parameters:
     EnvironmentName:
         Description: An Environment name that will be prefixed to resources
         Type: String
-    EC2InstanceProfileRole:
-        Description: IAM Role profile to be used when launching an EC2 Instance.
-        Type: String
 Resources:
     LBSecGroup:
       Type: AWS::EC2::SecurityGroup
