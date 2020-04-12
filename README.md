@@ -45,3 +45,4 @@ $ ./create.sh <name> servers.yml server_params.json
 > Output:
 
 * URL to the webapp: http://Serve-Udagr-PBRDB6ZJCMM5-218335503.us-east-2.elb.amazonaws.com
+> _login with any id/pass to view sample functioning of the site_
